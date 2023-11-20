@@ -12,6 +12,9 @@ def click_():
 
     total = float(hpre_) * float(valorh_)
     
+    if nome_ =="" or projeto_ == "" or hpre_ == "" or valorh_ == "" or prazo_ == "":
+        ctk.messagebox.showerror("Erro", "Preencha todos os campos")
+    
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font('Arial', 'B', 16)
@@ -58,7 +61,7 @@ valorh = ctk.CTkEntry(master=frame, placeholder_text="Valor da Hora:",width=200,
 prazo = ctk.CTkEntry(master=frame, placeholder_text="Prazo de Entrega:",width=200, font=('Reboco', 14)).place(x=50, y=140)
 
 
-tot = ctk.CTkLabel(master=frame, text='Valor total: ' + str(hpre * valorh),font=('Reboco', 18)).place(x=50, y=190) 
+tot = ctk.CTkLabel(master=frame, text='Valor total: ',font=('Reboco', 18)).place(x=50, y=190) 
 
 
 btn = ctk.CTkButton(master=frame, text='Gerar Orçamento', command=click_)
