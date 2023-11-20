@@ -4,16 +4,18 @@ from fpdf import FPDF
 
 
 def click_():
-    nome_= nome.get()
-    projeto_ = projeto.get()
-    hpre_ = hpre.get()
-    valorh_ = valorh.get()
-    prazo_ = prazo.get()
+    
+    
+        
+    nome_= nome_entry.get()
+    projeto_ = projeto_entry.get()
+    hpre_ = hpre_entry.get()
+    valorh_ = valorh_entry.get()
+    prazo_ = prazo_entry.get()
 
     total = float(hpre_) * float(valorh_)
     
-    if nome_ =="" or projeto_ == "" or hpre_ == "" or valorh_ == "" or prazo_ == "":
-        ctk.messagebox.showerror("Erro", "Preencha todos os campos")
+    
     
     pdf = FPDF()
     pdf.add_page()
@@ -28,7 +30,8 @@ def click_():
     pdf.text(120, 225, f'Assinatura do(a) {nome_}')
 
     pdf.output(f'Orçamento do {nome_}.pdf')
-    
+        
+
 
     
 
@@ -50,15 +53,20 @@ label_img.place(x=1, y=0)
 frame = ctk.CTkFrame(master=app, width=300, height=300)
 frame.place(x=300, y=0)
 
-nome = ctk.CTkEntry(master=frame, placeholder_text="Nome:",width=200, font=('Reboco', 14)).place(x=50, y=20)
+nome_entry = ctk.CTkEntry(master=frame, placeholder_text="Nome:",width=200, font=('Reboco', 14))
+nome_entry.place(x=50, y=20)
 
-projeto = ctk.CTkEntry(master=frame, placeholder_text="Projeto:",width=200, font=('Reboco', 14)).place(x=50, y=50)
+projeto_entry = ctk.CTkEntry(master=frame, placeholder_text="Projeto:",width=200, font=('Reboco', 14))
+projeto_entry.place(x=50, y=50)
 
-hpre = ctk.CTkEntry(master=frame, placeholder_text="Horas Previstas:",width=200, font=('Reboco', 14)).place(x=50, y=80)
+hpre_entry = ctk.CTkEntry(master=frame, placeholder_text="Horas Previstas:",width=200, font=('Reboco', 14))
+hpre_entry.place(x=50, y=80)
 
-valorh = ctk.CTkEntry(master=frame, placeholder_text="Valor da Hora:",width=200, font=('Reboco', 14)).place(x=50, y=110)
+valorh_entry = ctk.CTkEntry(master=frame, placeholder_text="Valor da Hora:",width=200, font=('Reboco', 14))
+valorh_entry.place(x=50, y=110)
 
-prazo = ctk.CTkEntry(master=frame, placeholder_text="Prazo de Entrega:",width=200, font=('Reboco', 14)).place(x=50, y=140)
+prazo_entry = ctk.CTkEntry(master=frame, placeholder_text="Prazo de Entrega:",width=200, font=('Reboco', 14))
+prazo_entry.place(x=50, y=140)
 
 
 tot = ctk.CTkLabel(master=frame, text='Valor total: ',font=('Reboco', 18)).place(x=50, y=190) 
@@ -69,7 +77,6 @@ btn.place(x=80,y=240)
 
 #Back-end
 
-    
 
 
 
