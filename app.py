@@ -3,7 +3,7 @@ from tkinter import *
 from fpdf import FPDF
 from tkinter import messagebox
 from view import *
-from customtkinter import CTkImage
+
 
 
 
@@ -46,9 +46,6 @@ prazo_entry.place(x=50, y=140)
 
 tot = ctk.CTkLabel(master=frame, text='Valor total: ',font=('Reboco', 18)).place(x=50, y=190) 
 
-
-
-
 #Back-end
 
 def click_():   
@@ -73,21 +70,29 @@ def click_():
     hpre_entry.delete(0,'end')
     valorh_entry.delete(0,'end')
     prazo_entry.delete(0,'end')
+    
     try:
-        total = lst_orc[2] * lst_orc[3]
+        nome = lst_orc[0] 
+        projeto = lst_orc[1]
+        hp = lst_orc[2]
+        vh = lst_orc[3]
+        p = lst_orc[4]
+        total = float(hp * vh)
+        # Importar PDF
+        
         pdf = FPDF()
         pdf.add_page()
         pdf.set_font('Arial', 'B', 16)
-        pdf.image('../img/formulario.png', x=0, y=0)
+        pdf.image('./img/formulario.png', x=0, y=0)
 
-        pdf.text(115, 145, lst_orc[1])
-        pdf.text(115, 160, f'{lst_orc[2]}h')
-        pdf.text(115, 175, f'{lst_orc[3]:.2f}')
-        pdf.text(115, 190, lst_orc[4])
+        pdf.text(115, 145, projeto)
+        pdf.text(115, 160, f'{hp}h')
+        pdf.text(115, 175, f'{vh:.2f}')
+        pdf.text(115, 190, p)
         pdf.text(120, 205, f'{total:.2f}')
-        pdf.text(120, 225, f'Assinatura do(a) {lst_orc[0]}')
+        pdf.text(120, 225, f'Assinatura do(a) {nome}')
 
-        pdf.output(f'Orçamento do {nome_}.pdf')
+        pdf.output(f'Orçamento do {nome}.pdf')
     except:
         messagebox.showerror('ERRO!', 'Erro ao gerar pdf')
     
@@ -96,35 +101,10 @@ def click_():
     except:
         messagebox.showerror('ERRO!', 'Erro ao excluir')
         
-    
-
-
 
 
 btn = ctk.CTkButton(master=frame, text='Gerar Orçamento', command=click_)
 btn.place(x=80,y=240)
-
-
-#importar pdf
-
-
-'''   
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font('Arial', 'B', 16)
-    pdf.image('./img/formulario.png', x=0, y=0)
-
-    pdf.text(115, 145, projeto_)
-    pdf.text(115, 160, f'{hpre_}h')
-    pdf.text(115, 175, f'{valorh_:.2f}')
-    pdf.text(115, 190, prazo_)
-    pdf.text(120, 205, f'{total:.2f}')
-    pdf.text(120, 225, f'Assinatura do(a) {nome_}')
-
-    pdf.output(f'Orçamento do {nome_}.pdf')
-        
-'''
-
 
 
 

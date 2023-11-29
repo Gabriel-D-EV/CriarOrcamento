@@ -1,6 +1,6 @@
 import sqlite3 as lite
 
-cx = lite.connect('bd.db')
+cx = lite.connect('dados.db')
 
 
 def inserir_(i):
