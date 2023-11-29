@@ -3,6 +3,10 @@ from tkinter import *
 from fpdf import FPDF
 from tkinter import messagebox
 from view import *
+from customtkinter import CTkImage
+
+
+
 
     
 
@@ -53,6 +57,7 @@ def click_():
     hpre_ = hpre_entry.get()
     valorh_ = valorh_entry.get()
     prazo_ = prazo_entry.get()
+    
 
     lst_orc = [nome_, projeto_, hpre_, valorh_, prazo_]
 
@@ -68,7 +73,31 @@ def click_():
     hpre_entry.delete(0,'end')
     valorh_entry.delete(0,'end')
     prazo_entry.delete(0,'end')
+    try:
+        total = lst_orc[2] * lst_orc[3]
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font('Arial', 'B', 16)
+        pdf.image('../img/formulario.png', x=0, y=0)
+
+        pdf.text(115, 145, lst_orc[1])
+        pdf.text(115, 160, f'{lst_orc[2]}h')
+        pdf.text(115, 175, f'{lst_orc[3]:.2f}')
+        pdf.text(115, 190, lst_orc[4])
+        pdf.text(120, 205, f'{total:.2f}')
+        pdf.text(120, 225, f'Assinatura do(a) {lst_orc[0]}')
+
+        pdf.output(f'Orçamento do {nome_}.pdf')
+    except:
+        messagebox.showerror('ERRO!', 'Erro ao gerar pdf')
     
+    try:
+        del_(1)
+    except:
+        messagebox.showerror('ERRO!', 'Erro ao excluir')
+        
+    
+
 
 
 
