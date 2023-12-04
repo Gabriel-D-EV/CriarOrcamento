@@ -44,7 +44,7 @@ prazo_entry = ctk.CTkEntry(master=frame, placeholder_text="Prazo de Entrega em d
 prazo_entry.place(x=50, y=140)
 
 
-tot = ctk.CTkLabel(master=frame, text='Valor total: ',font=('Reboco', 18)).place(x=50, y=190) 
+tot = ctk.CTkLabel(master=frame, text='Valor total: ',font=('Reboco', 18)).place(x=50, y=180) 
 
 #Back-end
 
@@ -52,8 +52,11 @@ def click_():
     nome_= nome_entry.get()
     projeto_ = projeto_entry.get()
     hpre_ = hpre_entry.get()
+    hpre_ = float(hpre_)
     valorh_ = valorh_entry.get()
+    valorh_ = float(valorh_)
     prazo_ = prazo_entry.get()
+    total_ = valorh_ * hpre_
     
 
     lst_orc = [nome_, projeto_, hpre_, valorh_, prazo_]
@@ -71,41 +74,49 @@ def click_():
     valorh_entry.delete(0,'end')
     prazo_entry.delete(0,'end')
     
+       
+def imprimir_():
     try:
-        nome = lst_orc[0] 
-        projeto = lst_orc[1]
-        hp = lst_orc[2]
-        vh = lst_orc[3]
-        p = lst_orc[4]
-        total = float(hp * vh)
-        # Importar PDF
+        nome_= nome_entry.get()
+        projeto_ = projeto_entry.get()
+        hpre_ = hpre_entry.get()
+        hpre_ = float(hpre_)
+        valorh_ = valorh_entry.get()
+        valorh_ = float(valorh_)
+        prazo_ = prazo_entry.get()
+        total_ = valorh_ * hpre_
         
+
+        lst_orc = [nome_, projeto_, hpre_, valorh_, prazo_]
+
+            
         pdf = FPDF()
         pdf.add_page()
         pdf.set_font('Arial', 'B', 16)
         pdf.image('./img/formulario.png', x=0, y=0)
 
-        pdf.text(115, 145, projeto)
-        pdf.text(115, 160, f'{hp}h')
-        pdf.text(115, 175, f'{vh:.2f}')
-        pdf.text(115, 190, p)
-        pdf.text(120, 205, f'{total:.2f}')
-        pdf.text(120, 225, f'Assinatura do(a) {nome}')
+        pdf.text(115, 145, projeto_)
+        pdf.text(115, 160, f'{hpre_}h')
+        pdf.text(115, 175, f'{valorh_:.2f}')
+        pdf.text(115, 190, prazo_)
+        pdf.text(120, 205, f'{total_:.2f}')
+        pdf.text(120, 225, f'Assinatura do(a) {nome_}')
 
-        pdf.output(f'Orçamento do {nome}.pdf')
+        pdf.output(f'Orçamento do {nome_}.pdf')
     except:
         messagebox.showerror('ERRO!', 'Erro ao gerar pdf')
     
     try:
-        del_(1)
+        del_('1')
     except:
         messagebox.showerror('ERRO!', 'Erro ao excluir')
-        
 
 
-btn = ctk.CTkButton(master=frame, text='Gerar Orçamento', command=click_)
-btn.place(x=80,y=240)
+btn = ctk.CTkButton(master=frame, text='Salvar', command=click_)
+btn.place(x=80,y=220)
 
+btn2 = ctk.CTkButton(master=frame, text='Gerar Orçamento', command=imprimir_)
+btn2.place(x=80,y=260)
 
 
 app.mainloop()
