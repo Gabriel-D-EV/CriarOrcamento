@@ -10,8 +10,7 @@ def inserir_(i):
         cur.execute(query,i)
         
         
-def del_(i):
+def del_():
     with cx:
         cur = cx.cursor()
-        query = "DELETE FROM Inventario WHERE id=?"
-        cur.execute(query,i)
+        cur.execute("DELETE FROM Orcamento")
