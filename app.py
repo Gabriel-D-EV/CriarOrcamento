@@ -109,7 +109,7 @@ def imprimir_():
         pdf.text(115, 175, Valor_Hora)
         pdf.text(115, 190, Prazo)
         pdf.text(120, 205, total)
-        pdf.text(120, 225, f'Assinatura do(a) {Nome}')
+        pdf.text(120, 255, f'Assinatura do(a) {Nome}')
         pdf.output(f'Orçamento do {Nome}.pdf')
         
     except Exception as e:
