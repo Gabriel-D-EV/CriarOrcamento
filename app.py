@@ -101,7 +101,7 @@ def imprimir_():
           
         pdf = FPDF()
         pdf.add_page()
-        pdf.set_font('Arial', 'B', 16)
+        pdf.set_font('Arial', 'B', 20)
         pdf.image('./img/formulario.png', x=0, y=0)
         
         pdf.text(115, 145, Projeto)
