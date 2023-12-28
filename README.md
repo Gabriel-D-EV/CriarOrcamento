@@ -7,11 +7,11 @@ Uma das principais características deste projeto é a capacidade de exportar os
 
 Este projeto demonstra minha habilidade em desenvolver soluções práticas que atendem às necessidades dos usuários, ao mesmo tempo em que utilizam tecnologias modernas para melhorar a experiência do usuário.
 
-##app
+APP:
 
 <img src="https://github.com/Gabriel-D-EV/CriarOrcamento/blob/main/img/orcamentos.png?raw=true" width="60%" height="auto">
 
-##pdf
+PDF:
 
 <img src="https://github.com/Gabriel-D-EV/CriarOrcamento/blob/main/img/formulario.png?raw=true" width="60%" height="auto">
 
